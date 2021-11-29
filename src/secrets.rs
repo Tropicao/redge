@@ -1,7 +1,11 @@
 use serde::{Deserialize, Serialize};
-use std::io::BufReader;
-use std::path::Path;
-use std::{error::Error, fs::File};
+use std::{
+    error::Error,
+    fs::{File, OpenOptions},
+    io::BufReader,
+    os::unix::fs::OpenOptionsExt,
+    path::Path,
+};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Credentials {
@@ -76,7 +80,12 @@ impl Secrets {
     }
 
     pub fn store(&self) -> Result<(), Box<dyn Error>> {
-        let file = File::create(Path::new(&self.secrets_path))?;
+        let file = OpenOptions::new()
+            .mode(0o600)
+            .write(true)
+            .read(true)
+            .create(true)
+            .open(Path::new(&self.secrets_path))?;
         Ok(serde_json::to_writer(file, &self.credentials)?)
     }
 }
