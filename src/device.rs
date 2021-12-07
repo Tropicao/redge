@@ -1,7 +1,6 @@
 use std::path::{Path, PathBuf};
 
 pub struct Device {
-    block_device: PathBuf,
     mount_point: PathBuf,
 }
 
@@ -38,20 +37,11 @@ impl Device {
                 let detected_mount_point =
                     get_mount_point_from_block_device(&block_device).unwrap();
                 Ok(Device {
-                    block_device: block_device.to_path_buf(),
                     mount_point: detected_mount_point.to_path_buf(),
                 })
             }
             None => Err("No device found"),
         }
-    }
-
-    pub fn block_device(&self) -> String {
-        String::from(self.block_device.to_str().unwrap())
-    }
-
-    pub fn mount_point(&self) -> String {
-        String::from(self.mount_point.to_str().unwrap())
     }
 
     fn get_all_activities(&self) -> Vec<PathBuf> {
