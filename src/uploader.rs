@@ -44,7 +44,7 @@ impl Uploader {
         println!("https://www.strava.com/oauth/authorize?client_id={}&response_type=code&redirect_uri=http://localhost&approval_prompt=force&scope=activity:write", client_id);
         println!("Once authorized, please paste here the URL you have been redirected to :");
         let mut redirected_url = String::new();
-        stdin().read_line(&mut &mut redirected_url)?;
+        stdin().read_line(&mut redirected_url)?;
         redirected_url.pop();
         let parsed_url = Url::parse(&redirected_url)?;
         Ok(parsed_url
