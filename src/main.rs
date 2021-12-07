@@ -1,8 +1,11 @@
+mod device;
+mod uploader;
+
 use clap::{App, Arg};
+use device::Device;
 use log::info;
-use redge::device::Device;
-use redge::uploader::Uploader;
 use std::error::Error;
+use uploader::Uploader;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let device = Device::new()?;

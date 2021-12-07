@@ -1,9 +1,11 @@
-use crate::secrets::Secrets;
-use crate::strava::Strava;
+mod secrets;
+mod strava;
 use log::{debug, info};
+use secrets::Secrets;
 use std::error::Error;
 use std::io::stdin;
 use std::path::PathBuf;
+use strava::Strava;
 use url::Url;
 
 pub struct Uploader {
