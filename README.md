@@ -4,7 +4,8 @@
 
 Redge is a command-line tool for uploading sport activities from a tracker (bike GPS, smart watch, etc) to [Strava](https://www.strava.com/). Most of sport trackers are able to upload activities wireless (with help of a smartphone), but :
 * some of them still need a good old fashion USB cable, and as a consequence, an application, not always available for your platform (eg: Linux)
-* some devices struggle to upload through a smartphone, wireless, but offer the USB alternative
+* some devices struggle to upload through a smartphone, wireless, but offer the USB alternative.
+
 Redge aims to ease the USB use case by providing a straightforward command line tool to upload activities from any plugged device.
 
 ## Current status
